@@ -1,9 +1,27 @@
-#include "lfsr257.h"
+/*
+ * =====================================================================================
+ *
+ *       Filename:  lfsr_4.cpp
+ *
+ *    Description:  
+ *
+ *        Version:  1.0
+ *        Created:  11/28/2013 08:35:36 AM
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Gustavo Banegas (), gustavosouzabanegas@gmail.com
+ *   Organization:  
+ *
+ * =====================================================================================
+ */
 
-LFSR_257::LFSR_257(unsigned int seed){
+#include "lfsr4.h"
+
+LFSR_4::LFSR_4(unsigned int seed){
 	TAPS[0] = 0;
-	TAPS[1] = 192;
-	TAPS[2] = 257;
+	TAPS[1] = 1;
+	TAPS[2] = 4;
 	for (int i = 0; i < M; i++) {
 		bits[i] = (((1 << i) & seed) >> i) == 1;
 	}
@@ -12,12 +30,12 @@ LFSR_257::LFSR_257(unsigned int seed){
 	}
 }
 
-LFSR_257::~LFSR_257()
+LFSR_4::~LFSR_4()
 {
 
 }
 
-int LFSR_257::nextInt() {
+int LFSR_4::nextInt() {
 
 	int next = 0;
 	for (int i = 0; i < M; i++) {
@@ -38,7 +56,7 @@ int LFSR_257::nextInt() {
 
 }
 
-mpz_class LFSR_257::getPeriod(){
+mpz_class LFSR_4::getPeriod(){
 	mpz_class n("0",10);
 	mpz_class one("1",10);
 	do{
@@ -49,7 +67,7 @@ mpz_class LFSR_257::getPeriod(){
 	return n;
 }
 
-bool LFSR_257::compare(bool bits[], bool bitsOriginal[])
+bool LFSR_4::compare(bool bits[], bool bitsOriginal[])
 {
 	for(int i =0; i < this->M; i++){
 		if(bits[i] != bitsOriginal[i]){
@@ -59,9 +77,9 @@ bool LFSR_257::compare(bool bits[], bool bitsOriginal[])
 	return true;
 }
 
-void LFSR_257::printBits()
+void LFSR_4::printBits()
 {
-	std::cout << (this->bits[M] ? 1  : 0) << " -> " << std::endl;
+	std::cout << (this->bits[M] ? 1  : 0) << " -> ";
 	for(int i = this->M - 1;  i >=0; i--){
 		std::cout << (this->bits[i] ? 1 : 0);
 	}

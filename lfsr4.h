@@ -1,5 +1,5 @@
-#ifndef LFSR_257_H
-#define LFSR_257_H
+#ifndef LFSR_4_H
+#define LFSR_4_H
 #include "lfsr.h"
 
 #include <cmath>
@@ -7,17 +7,17 @@
 #include <gmpxx.h>
 #include <iostream>
 
-class LFSR_257 : public LFSR {
+class LFSR_4 : public LFSR {
 
-static const int M = 257;
+	static const int M = 4;
 
-public:
-	LFSR_257(unsigned int seed);
-	~LFSR_257();
+	public:
+	LFSR_4(unsigned int seed);
+	~LFSR_4();
 	virtual int nextInt();
 	virtual mpz_class getPeriod();
 	void printBits();
-private:
+	private:
 	bool compare(bool bits[],bool bitsOriginal[]);
 	int TAPS[3];
 	bool bits[M+1];
@@ -25,3 +25,4 @@ private:
 
 };
 #endif
+

@@ -16,20 +16,24 @@
  * =====================================================================================
  */
 #include "lfsr257.h"
+#include "lfsr4.h"
 
 #include <iostream>
 
 using namespace std;
 int main (int argc, char **argv) {
 	
-	LFSR_257 lfsr(1);
+	LFSR_4 lfsr(1);
 	
-	//cout << lfsr.nextInt() << endl;
-	lfsr.printBytes();
+	cout << lfsr.getPeriod() << endl;
+
+	cout << lfsr.nextInt() << endl;
+	cout << lfsr.nextInt() << endl;
+	lfsr.printBits();
 	
-	mpz_class n("48112959837082048697", 10);
-	mpz_class z("1",10);
-	n = z+n;
-	cout << n.get_str() << "\n" << endl;
+	//mpz_class n("48112959837082048697", 10);
+	//mpz_class z("1",10);
+	//n = z+n;
+	//cout << n.get_str() << "\n" << endl;
 	return 0;
 }
